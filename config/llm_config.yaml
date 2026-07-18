@@ -1,0 +1,281 @@
+# LLM configuration
+
+default_provider: "deepseek"
+
+providers:
+  # Alibaba Cloud Bailian
+  aliyun:
+    name: "Alibaba Cloud Bailian"
+    api_key: "YOUR_ALIYUN_API_KEY"
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    max_n: 4
+    models:
+      qwen3.6-plus:
+        name: "qwen3.6-plus"
+        short_name: "qwen36-plus"
+        max_tokens: 32768
+        temperature: 0.6
+        context_window: 131072
+        cost_per_1k_input: 0.002
+        cost_per_1k_output: 0.012
+        thinking:
+          enabled: false
+      qwen3.6-flash:
+        name: "qwen3.6-flash"
+        short_name: "qwen36-flash"
+        max_tokens: 32768
+        temperature: 0.7
+        cost_per_1k_input: 0.0002
+        cost_per_1k_output: 0.002
+        thinking:
+          enabled: true
+          thinking_budget: 4096
+      MiniMax-M2.7:
+        name: "MiniMax/MiniMax-M2.7"
+        short_name: "minimax-m2.7"
+        max_tokens: 65536
+        temperature: 0.7
+        cost_per_1k_input: 0.0002
+        cost_per_1k_output: 0.002
+        thinking:
+          enabled: true
+          thinking_budget: 4096
+      qwen3-8b:
+        name: "qwen3-8b"
+        short_name: "qwen3-8b"
+        max_tokens: 8192
+        temperature: 0.7
+        cost_per_1k_input: 0.0002
+        cost_per_1k_output: 0.002
+        stream: true  # enable_thinking only supports stream mode
+        thinking:
+          enabled: true
+          thinking_budget: 4096
+      qwen3.5-35b-a3b:
+        name: "qwen3.5-35b-a3b"
+        short_name: "qwen35-35b-a3b"
+        max_tokens: 32768
+        temperature: 0.7
+        cost_per_1k_input: 0.0004
+        cost_per_1k_output: 0.0032
+        thinking:
+          enabled: true
+          thinking_budget: 4096
+      qwen3.5-flash:
+        name: "qwen3.5-flash"
+        short_name: "qwen35-flash"
+        max_tokens: 32768
+        temperature: 0.7
+        cost_per_1k_input: 0.0002
+        cost_per_1k_output: 0.002
+        thinking:
+          enabled: false
+      qwen-plus:
+        name: "qwen-plus"
+        short_name: "qwen-plus"
+        max_tokens: 32768
+        temperature: 0.7
+        context_window: 32768
+        cost_per_1k_input: 0.004
+        cost_per_1k_output: 0.004
+      qwen-max:
+        name: "qwen-max"
+        short_name: "qwen-max"
+        max_tokens: 6144
+        temperature: 0.7
+        context_window: 6144
+        cost_per_1k_input: 0.02
+        cost_per_1k_output: 0.02
+    default_model: "qwen3.6-plus"
+
+  # DeepSeek
+  deepseek:
+    name: "DeepSeek"
+    api_key: "YOUR_DEEPSEEK_API_KEY"
+    base_url: "https://api.deepseek.com"
+    max_n: 4
+    models:
+      deepseek-v4-flash:
+        name: "deepseek-v4-flash"
+        short_name: "ds-v4-flash"
+        max_tokens: 32768
+        temperature: 0.7
+        context_window: 1000000
+        cost_per_1k_input: 0.001
+        cost_per_1k_input_cached: 0.0002
+        cost_per_1k_output: 0.002
+        thinking:
+          enabled: true
+          effort: "high"
+      deepseek-v4-pro:
+        name: "deepseek-v4-pro"
+        short_name: "ds-v4-pro"
+        max_tokens: 65536
+        temperature: 0.7
+        context_window: 1000000
+        cost_per_1k_input: 0.012
+        cost_per_1k_input_cached: 0.001
+        cost_per_1k_output: 0.024
+        thinking:
+          enabled: true
+          effort: "high"
+    default_model: "deepseek-v4-flash"
+
+  # Xiaomi MiMo
+  xiaomi:
+    name: "Xiaomi MiMo"
+    api_key: "YOUR_XIAOMI_API_KEY"
+    base_url: "https://api.xiaomimimo.com/v1"
+    max_n: 1
+    models:
+      mimo-v2.5-pro:
+        name: "mimo-v2.5-pro"
+        short_name: "mimo-v2.5-pro"
+        max_tokens: 32768
+        temperature: 0.7
+        context_window: 1000000
+        cost_per_1k_input: 0.03
+        cost_per_1k_output: 0.06
+        thinking:
+          enabled: true
+          type: "enabled"
+      mimo-v2.5:
+        name: "mimo-v2.5"
+        short_name: "mimo-v2.5"
+        max_tokens: 32768
+        temperature: 0.7
+        context_window: 1000000
+        cost_per_1k_input: 0.01
+        cost_per_1k_output: 0.02
+        thinking:
+          enabled: true
+          type: "enabled"
+    default_model: "mimo-v2.5-pro"
+
+  # Zhipu AI
+  zhipu:
+    name: "Zhipu AI"
+    api_key: "YOUR_ZHIPU_API_KEY"
+    base_url: "https://open.bigmodel.cn/api/paas/v4"
+    max_n: 4
+    models:
+      glm-4.7-flash:
+        name: "glm-4.7-flash"
+        short_name: "glm47-flash"
+        max_tokens: 65536
+        temperature: 0.7
+        context_window: 131072
+        cost_per_1k_input: 0.0
+        cost_per_1k_output: 0.0
+        thinking:
+          enabled: true
+          type: "enabled"
+    default_model: "glm-4.7-flash"
+
+  # Local
+  local:
+    name: "Local DeepSeek"
+    api_key: "YOUR_LOCAL_API_KEY"
+    base_url: "https://your-local-endpoint/v1"
+    max_n: 4
+    models:
+      deepseek-v3.2:
+        name: "deepseek-v3.2"
+        short_name: "ds-v3.2"
+        max_tokens: 16384
+        temperature: 0.7
+        cost_per_1k_input: 0.0
+        cost_per_1k_output: 0.0
+    default_model: "deepseek-v3.2"
+
+  # OpenAI
+  openai:
+    name: "OpenAI"
+    api_key_env: "OPENAI_API_KEY"  # Read from environment variable
+    base_url: "https://api.openai.com/v1"
+    models:
+      gpt-4:
+        name: "gpt-4"
+        short_name: "gpt4"
+        max_tokens: 8192
+        temperature: 0.3
+        context_window: 8192
+        cost_per_1k_input: 0.03
+        cost_per_1k_output: 0.06
+      gpt-4-turbo:
+        name: "gpt-4-turbo-preview"
+        short_name: "gpt4-turbo"
+        max_tokens: 4096
+        temperature: 0.3
+        context_window: 128000
+        cost_per_1k_input: 0.01
+        cost_per_1k_output: 0.03
+      gpt-3.5-turbo:
+        name: "gpt-3.5-turbo"
+        short_name: "gpt35-turbo"
+        max_tokens: 4096
+        temperature: 0.3
+        context_window: 16385
+        cost_per_1k_input: 0.0005
+        cost_per_1k_output: 0.0015
+    default_model: "gpt-4-turbo"
+
+  # Azure OpenAI
+  azure:
+    name: "Azure OpenAI"
+    api_key: "AZURE_OPENAI_API_KEY"
+    base_url: "https://your-resource.openai.azure.com/"
+    api_version: "2024-02-01"
+    deployment_name: "your-deployment-name"
+    models:
+      gpt-4:
+        name: "gpt-4"
+        short_name: "azure-gpt4"
+        max_tokens: 8192
+        temperature: 0.3
+    default_model: "gpt-4"
+
+  # Anthropic Claude
+  anthropic:
+    name: "Anthropic Claude"
+    api_key: "ANTHROPIC_API_KEY"
+    base_url: "https://api.anthropic.com"
+    models:
+      claude-3-opus:
+        name: "claude-3-opus-20240229"
+        short_name: "claude3-opus"
+        max_tokens: 4096
+        temperature: 0.3
+        context_window: 200000
+        cost_per_1k_input: 0.015
+        cost_per_1k_output: 0.075
+      claude-3-sonnet:
+        name: "claude-3-sonnet-20240229"
+        short_name: "claude3-sonnet"
+        max_tokens: 4096
+        temperature: 0.3
+        context_window: 200000
+        cost_per_1k_input: 0.003
+        cost_per_1k_output: 0.015
+    default_model: "claude-3-sonnet"
+
+task_models:
+  simple: "gpt-3.5-turbo"
+  standard: "gpt-4-turbo"
+  complex: "gpt-4"
+  creative: "claude-3-opus"
+
+retry:
+  max_retries: 5
+  initial_delay: 1.0
+  exponential_base: 2.0
+  max_delay: 120.0
+
+rate_limit:
+  requests_per_minute: 60
+  tokens_per_minute: 150000
+
+output:
+  save_raw_response: true
+  save_prompt: true
+  response_dir: "./output/llm_responses"

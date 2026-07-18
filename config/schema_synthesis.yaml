@@ -1,0 +1,29 @@
+# Schema Synthesis Configuration
+
+# Difference allocation
+allocation:
+  diffs_per_db: 3
+  min_coverage: 2
+  random_seed: 42
+  differences_file: "data/database_sync_requirements.json"
+  split_info_file: "data/split_info.json"
+
+# LLM schema expansion
+expansion:
+  provider: "deepseek"
+  model: "deepseek-v4-flash"
+  concurrent_batch_size: 6
+  temperature: 0.7
+  max_tokens: 32768
+  max_retries: 3              # reflection attempts on validation failure
+  db_test_max_retries: 2      # fix attempts on DDL test failure
+  output_dir: "output/schema_expansion"
+
+# Target dialects
+target_dialects:
+  - mysql
+  - postgresql
+  - oracle
+
+database_config: "config/database_sync.yaml"
+database_dir: "database"

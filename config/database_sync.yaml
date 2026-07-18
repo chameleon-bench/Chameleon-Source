@@ -1,0 +1,28 @@
+database:
+  mysql:
+    host: YOUR_MYSQL_HOST
+    port: 3306
+    user: root
+    password: YOUR_MYSQL_PASSWORD
+    database_prefix: ""
+
+  postgresql:
+    host: YOUR_PG_HOST
+    port: 5432
+    user: postgres
+    password: YOUR_PG_PASSWORD
+    database_prefix: ""
+
+  oracle:
+    host: YOUR_ORACLE_HOST
+    port: 1521
+    user: system
+    password: YOUR_ORACLE_PASSWORD
+    service_name: XE
+    database_prefix: ""
+    import_password: "YOUR_ORACLE_USER_PASSWORD"  # Password for per-database Oracle schema users
+
+local_database_dir: ./database
+log_level: INFO
+skip_existing: true
+created_databases_log: ./logs/created_databases.json

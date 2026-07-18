@@ -1,0 +1,5357 @@
+{
+  "meta": {
+    "dialects": [
+      "mysql",
+      "postgres",
+      "oracle"
+    ],
+    "total_differences": 554,
+    "category_summary": {
+      "Dialect Property": 14,
+      "Keyword": 106,
+      "Lexical": 10,
+      "Data Type": 30,
+      "Expression": 110,
+      "Generator Config": 39,
+      "Function": 109,
+      "Syntax Structure": 47,
+      "DDL Property": 4,
+      "Temporal Format": 63,
+      "INTERVAL": 22
+    }
+  },
+  "differences": [
+    {
+      "id": "DIFF_0001",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "INDEX_OFFSET",
+      "mysql": "0",
+      "postgres": "1",
+      "oracle": "0",
+      "description": "Array base index offset"
+    },
+    {
+      "id": "DIFF_0002",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "NULL_ORDERING",
+      "mysql": "nulls_are_small",
+      "postgres": "nulls_are_large",
+      "oracle": "nulls_are_large",
+      "description": "NULL value sorting behavior"
+    },
+    {
+      "id": "DIFF_0003",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "TYPED_DIVISION",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether division is type-sensitive (integer vs float division)"
+    },
+    {
+      "id": "DIFF_0004",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "SAFE_DIVISION",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "False",
+      "description": "Whether division by zero returns NULL instead of error"
+    },
+    {
+      "id": "DIFF_0005",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "CONCAT_COALESCE",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether NULL becomes empty string in CONCAT"
+    },
+    {
+      "id": "DIFF_0006",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "DPIPE_IS_STRING_CONCAT",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether || operator is string concatenation"
+    },
+    {
+      "id": "DIFF_0007",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "NORMALIZATION_STRATEGY",
+      "mysql": "NormalizationStrategy.CASE_SENSITIVE",
+      "postgres": "NormalizationStrategy.LOWERCASE",
+      "oracle": "NormalizationStrategy.UPPERCASE",
+      "description": "Identifier case normalization strategy"
+    },
+    {
+      "id": "DIFF_0008",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "SUPPORTS_USER_DEFINED_TYPES",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether user-defined types are supported"
+    },
+    {
+      "id": "DIFF_0009",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "TABLESAMPLE_SIZE_IS_PERCENT",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether TABLESAMPLE size is percentage"
+    },
+    {
+      "id": "DIFF_0010",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "IDENTIFIERS_CAN_START_WITH_DIGIT",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "False",
+      "description": "Whether identifiers can start with digit"
+    },
+    {
+      "id": "DIFF_0011",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "ALIAS_POST_TABLESAMPLE",
+      "mysql": "False",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether table alias is after TABLESAMPLE"
+    },
+    {
+      "id": "DIFF_0012",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "LOCKING_READS_SUPPORTED",
+      "mysql": "N/A",
+      "postgres": "N/A",
+      "oracle": "True",
+      "description": "Whether locking reads are supported (SELECT...FOR UPDATE)"
+    },
+    {
+      "id": "DIFF_0013",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "PROMOTE_TO_INFERRED_DATETIME_TYPE",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "False",
+      "description": "Whether to promote to inferred datetime type"
+    },
+    {
+      "id": "DIFF_0014",
+      "category": "Dialect Property",
+      "subcategory": "Dialect Class Property",
+      "feature": "TABLES_REFERENCEABLE_AS_COLUMNS",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether tables can be referenced as columns"
+    },
+    {
+      "id": "DIFF_0015",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "CHARSET",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: CHARSET"
+    },
+    {
+      "id": "DIFF_0016",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "DISTINCTROW",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: DISTINCTROW"
+    },
+    {
+      "id": "DIFF_0017",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "FORCE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: FORCE"
+    },
+    {
+      "id": "DIFF_0018",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "IGNORE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: IGNORE"
+    },
+    {
+      "id": "DIFF_0019",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "KEY",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: KEY"
+    },
+    {
+      "id": "DIFF_0020",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "LOCK TABLES",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: LOCK TABLES"
+    },
+    {
+      "id": "DIFF_0021",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "MEMBER OF",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: MEMBER OF"
+    },
+    {
+      "id": "DIFF_0022",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "MOD",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: MOD"
+    },
+    {
+      "id": "DIFF_0023",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "SEPARATOR",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: SEPARATOR"
+    },
+    {
+      "id": "DIFF_0024",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "SIGNED",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: SIGNED"
+    },
+    {
+      "id": "DIFF_0025",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "SIGNED INTEGER",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: SIGNED INTEGER"
+    },
+    {
+      "id": "DIFF_0026",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "SOUNDS LIKE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: SOUNDS LIKE"
+    },
+    {
+      "id": "DIFF_0027",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "UNLOCK TABLES",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: UNLOCK TABLES"
+    },
+    {
+      "id": "DIFF_0028",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "UNSIGNED",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: UNSIGNED"
+    },
+    {
+      "id": "DIFF_0029",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "UNSIGNED INTEGER",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: UNSIGNED INTEGER"
+    },
+    {
+      "id": "DIFF_0030",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "YEAR",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: YEAR"
+    },
+    {
+      "id": "DIFF_0031",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_ARMSCII8",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _ARMSCII8"
+    },
+    {
+      "id": "DIFF_0032",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_ASCII",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _ASCII"
+    },
+    {
+      "id": "DIFF_0033",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_BIG5",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _BIG5"
+    },
+    {
+      "id": "DIFF_0034",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_BINARY",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _BINARY"
+    },
+    {
+      "id": "DIFF_0035",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_CP1250",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _CP1250"
+    },
+    {
+      "id": "DIFF_0036",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_CP1251",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _CP1251"
+    },
+    {
+      "id": "DIFF_0037",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_CP1256",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _CP1256"
+    },
+    {
+      "id": "DIFF_0038",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_CP1257",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _CP1257"
+    },
+    {
+      "id": "DIFF_0039",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_CP850",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _CP850"
+    },
+    {
+      "id": "DIFF_0040",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_CP852",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _CP852"
+    },
+    {
+      "id": "DIFF_0041",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_CP866",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _CP866"
+    },
+    {
+      "id": "DIFF_0042",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_CP932",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _CP932"
+    },
+    {
+      "id": "DIFF_0043",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_DEC8",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _DEC8"
+    },
+    {
+      "id": "DIFF_0044",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_EUCJPMS",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _EUCJPMS"
+    },
+    {
+      "id": "DIFF_0045",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_EUCKR",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _EUCKR"
+    },
+    {
+      "id": "DIFF_0046",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_GB18030",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _GB18030"
+    },
+    {
+      "id": "DIFF_0047",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_GB2312",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _GB2312"
+    },
+    {
+      "id": "DIFF_0048",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_GBK",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _GBK"
+    },
+    {
+      "id": "DIFF_0049",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_GEOSTD8",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _GEOSTD8"
+    },
+    {
+      "id": "DIFF_0050",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_GREEK",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _GREEK"
+    },
+    {
+      "id": "DIFF_0051",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_HEBREW",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _HEBREW"
+    },
+    {
+      "id": "DIFF_0052",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_HP8",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _HP8"
+    },
+    {
+      "id": "DIFF_0053",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_KEYBCS2",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _KEYBCS2"
+    },
+    {
+      "id": "DIFF_0054",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_KOI8R",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _KOI8R"
+    },
+    {
+      "id": "DIFF_0055",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_KOI8U",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _KOI8U"
+    },
+    {
+      "id": "DIFF_0056",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_LATIN1",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _LATIN1"
+    },
+    {
+      "id": "DIFF_0057",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_LATIN2",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _LATIN2"
+    },
+    {
+      "id": "DIFF_0058",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_LATIN5",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _LATIN5"
+    },
+    {
+      "id": "DIFF_0059",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_LATIN7",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _LATIN7"
+    },
+    {
+      "id": "DIFF_0060",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_MACCE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _MACCE"
+    },
+    {
+      "id": "DIFF_0061",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_MACROMAN",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _MACROMAN"
+    },
+    {
+      "id": "DIFF_0062",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_SJIS",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _SJIS"
+    },
+    {
+      "id": "DIFF_0063",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_SWE7",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _SWE7"
+    },
+    {
+      "id": "DIFF_0064",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_TIS620",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _TIS620"
+    },
+    {
+      "id": "DIFF_0065",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_UCS2",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _UCS2"
+    },
+    {
+      "id": "DIFF_0066",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_UJIS",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _UJIS"
+    },
+    {
+      "id": "DIFF_0067",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_UTF16",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _UTF16"
+    },
+    {
+      "id": "DIFF_0068",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_UTF16LE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _UTF16LE"
+    },
+    {
+      "id": "DIFF_0069",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_UTF32",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _UTF32"
+    },
+    {
+      "id": "DIFF_0070",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_UTF8",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _UTF8"
+    },
+    {
+      "id": "DIFF_0071",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_UTF8MB3",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _UTF8MB3"
+    },
+    {
+      "id": "DIFF_0072",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "_UTF8MB4",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive keyword: _UTF8MB4"
+    },
+    {
+      "id": "DIFF_0073",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "#-",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: #-"
+    },
+    {
+      "id": "DIFF_0074",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "<@",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: <@"
+    },
+    {
+      "id": "DIFF_0075",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "?&",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: ?&"
+    },
+    {
+      "id": "DIFF_0076",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "?|",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: ?|"
+    },
+    {
+      "id": "DIFF_0077",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "@>",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: @>"
+    },
+    {
+      "id": "DIFF_0078",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "BIGSERIAL",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: BIGSERIAL"
+    },
+    {
+      "id": "DIFF_0079",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "CSTRING",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: CSTRING"
+    },
+    {
+      "id": "DIFF_0080",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "DECLARE",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: DECLARE"
+    },
+    {
+      "id": "DIFF_0081",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "DO",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: DO"
+    },
+    {
+      "id": "DIFF_0082",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "EXEC",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: EXEC"
+    },
+    {
+      "id": "DIFF_0083",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "HSTORE",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: HSTORE"
+    },
+    {
+      "id": "DIFF_0084",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "INOUT",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: INOUT"
+    },
+    {
+      "id": "DIFF_0085",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "MONEY",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: MONEY"
+    },
+    {
+      "id": "DIFF_0086",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "NAME",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: NAME"
+    },
+    {
+      "id": "DIFF_0087",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "OID",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: OID"
+    },
+    {
+      "id": "DIFF_0088",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "ONLY",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: ONLY"
+    },
+    {
+      "id": "DIFF_0089",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "POINT",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: POINT"
+    },
+    {
+      "id": "DIFF_0090",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REFRESH",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REFRESH"
+    },
+    {
+      "id": "DIFF_0091",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGCLASS",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGCLASS"
+    },
+    {
+      "id": "DIFF_0092",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGCOLLATION",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGCOLLATION"
+    },
+    {
+      "id": "DIFF_0093",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGCONFIG",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGCONFIG"
+    },
+    {
+      "id": "DIFF_0094",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGDICTIONARY",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGDICTIONARY"
+    },
+    {
+      "id": "DIFF_0095",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGNAMESPACE",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGNAMESPACE"
+    },
+    {
+      "id": "DIFF_0096",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGOPER",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGOPER"
+    },
+    {
+      "id": "DIFF_0097",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGOPERATOR",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGOPERATOR"
+    },
+    {
+      "id": "DIFF_0098",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGPROC",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGPROC"
+    },
+    {
+      "id": "DIFF_0099",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGPROCEDURE",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGPROCEDURE"
+    },
+    {
+      "id": "DIFF_0100",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGROLE",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGROLE"
+    },
+    {
+      "id": "DIFF_0101",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REGTYPE",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REGTYPE"
+    },
+    {
+      "id": "DIFF_0102",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "REINDEX",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: REINDEX"
+    },
+    {
+      "id": "DIFF_0103",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "RESET",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: RESET"
+    },
+    {
+      "id": "DIFF_0104",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "SMALLSERIAL",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: SMALLSERIAL"
+    },
+    {
+      "id": "DIFF_0105",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "VARIADIC",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: VARIADIC"
+    },
+    {
+      "id": "DIFF_0106",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "XML",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: XML"
+    },
+    {
+      "id": "DIFF_0107",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "|/",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: |/"
+    },
+    {
+      "id": "DIFF_0108",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "||/",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: ||/"
+    },
+    {
+      "id": "DIFF_0109",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "~",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive keyword: ~"
+    },
+    {
+      "id": "DIFF_0110",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "(+)",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: (+)"
+    },
+    {
+      "id": "DIFF_0111",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "BINARY_DOUBLE",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: BINARY_DOUBLE"
+    },
+    {
+      "id": "DIFF_0112",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "BINARY_FLOAT",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: BINARY_FLOAT"
+    },
+    {
+      "id": "DIFF_0113",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "BULK COLLECT INTO",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: BULK COLLECT INTO"
+    },
+    {
+      "id": "DIFF_0114",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "COLUMNS",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: COLUMNS"
+    },
+    {
+      "id": "DIFF_0115",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "MATCH_RECOGNIZE",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: MATCH_RECOGNIZE"
+    },
+    {
+      "id": "DIFF_0116",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "MINUS",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: MINUS"
+    },
+    {
+      "id": "DIFF_0117",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "ORDER SIBLINGS BY",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: ORDER SIBLINGS BY"
+    },
+    {
+      "id": "DIFF_0118",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "SAMPLE",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: SAMPLE"
+    },
+    {
+      "id": "DIFF_0119",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "SYSTIMESTAMP",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: SYSTIMESTAMP"
+    },
+    {
+      "id": "DIFF_0120",
+      "category": "Keyword",
+      "subcategory": "Tokenizer Exclusive Keyword",
+      "feature": "TOP",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive keyword: TOP"
+    },
+    {
+      "id": "DIFF_0121",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "QUOTES",
+      "mysql": "[\"'\", '\"']",
+      "postgres": "[\"'\"]",
+      "oracle": "[\"'\"]",
+      "description": "String quote characters"
+    },
+    {
+      "id": "DIFF_0122",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "IDENTIFIERS",
+      "mysql": "['`']",
+      "postgres": "['\"']",
+      "oracle": "['\"']",
+      "description": "Identifier delimiters"
+    },
+    {
+      "id": "DIFF_0123",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "COMMENTS",
+      "mysql": "['--', '#', ('/*', '*/')]",
+      "postgres": "['--', ('/*', '*/')]",
+      "oracle": "['--', ('/*', '*/')]",
+      "description": "Comment syntax"
+    },
+    {
+      "id": "DIFF_0124",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "STRING_ESCAPES",
+      "mysql": "[\"'\", '\"', '\\\\']",
+      "postgres": "[\"'\"]",
+      "oracle": "[\"'\"]",
+      "description": "String escape character"
+    },
+    {
+      "id": "DIFF_0125",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "BIT_STRINGS",
+      "mysql": "[(\"b'\", \"'\"), (\"B'\", \"'\"), ('0b', '')]",
+      "postgres": "[(\"b'\", \"'\"), (\"B'\", \"'\")]",
+      "oracle": "[]",
+      "description": "Bit string syntax"
+    },
+    {
+      "id": "DIFF_0126",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "HEX_STRINGS",
+      "mysql": "[(\"x'\", \"'\"), (\"X'\", \"'\"), ('0x', '')]",
+      "postgres": "[(\"x'\", \"'\"), (\"X'\", \"'\")]",
+      "oracle": "[]",
+      "description": "Hex string syntax"
+    },
+    {
+      "id": "DIFF_0127",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "BYTE_STRINGS",
+      "mysql": "[]",
+      "postgres": "[(\"e'\", \"'\"), (\"E'\", \"'\")]",
+      "oracle": "[]",
+      "description": "Byte string syntax"
+    },
+    {
+      "id": "DIFF_0128",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "HEREDOC_STRINGS",
+      "mysql": "[]",
+      "postgres": "['$']",
+      "oracle": "[]",
+      "description": "Heredoc string syntax"
+    },
+    {
+      "id": "DIFF_0129",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "NESTED_COMMENTS",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether nested comments are supported"
+    },
+    {
+      "id": "DIFF_0130",
+      "category": "Lexical",
+      "subcategory": "Tokenizer Config",
+      "feature": "VAR_SINGLE_TOKENS",
+      "mysql": "[]",
+      "postgres": "['$']",
+      "oracle": "['#', '$', '@']",
+      "description": "Variable single-char token"
+    },
+    {
+      "id": "DIFF_0131",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "BIGINT",
+      "mysql": "(default: BIGINT)",
+      "postgres": "(default: BIGINT)",
+      "oracle": "INT",
+      "description": "Data type DType.BIGINT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0132",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "BINARY",
+      "mysql": "(default: BINARY)",
+      "postgres": "BYTEA",
+      "oracle": "BLOB",
+      "description": "Data type DType.BINARY mapping across dialects"
+    },
+    {
+      "id": "DIFF_0133",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "BLOB",
+      "mysql": "VARBINARY",
+      "postgres": "BYTEA",
+      "oracle": "BLOB",
+      "description": "Data type DType.BLOB mapping across dialects"
+    },
+    {
+      "id": "DIFF_0134",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "DATETIME",
+      "mysql": "(default: DATETIME)",
+      "postgres": "TIMESTAMP",
+      "oracle": "(default: DATETIME)",
+      "description": "Data type DType.DATETIME mapping across dialects"
+    },
+    {
+      "id": "DIFF_0135",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "DATETIME2",
+      "mysql": "DATETIME",
+      "postgres": "TIMESTAMP",
+      "oracle": "TIMESTAMP",
+      "description": "Data type DType.DATETIME2 mapping across dialects"
+    },
+    {
+      "id": "DIFF_0136",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "DECIMAL",
+      "mysql": "(default: DECIMAL)",
+      "postgres": "(default: DECIMAL)",
+      "oracle": "NUMBER",
+      "description": "Data type DType.DECIMAL mapping across dialects"
+    },
+    {
+      "id": "DIFF_0137",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "DOUBLE",
+      "mysql": "(default: DOUBLE)",
+      "postgres": "DOUBLE PRECISION",
+      "oracle": "DOUBLE PRECISION",
+      "description": "Data type DType.DOUBLE mapping across dialects"
+    },
+    {
+      "id": "DIFF_0138",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "FLOAT",
+      "mysql": "(default: FLOAT)",
+      "postgres": "REAL",
+      "oracle": "(default: FLOAT)",
+      "description": "Data type DType.FLOAT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0139",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "INT",
+      "mysql": "(default: INT)",
+      "postgres": "(default: INT)",
+      "oracle": "INT",
+      "description": "Data type DType.INT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0140",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "NCHAR",
+      "mysql": "CHAR",
+      "postgres": "CHAR",
+      "oracle": "NCHAR",
+      "description": "Data type DType.NCHAR mapping across dialects"
+    },
+    {
+      "id": "DIFF_0141",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "NVARCHAR",
+      "mysql": "VARCHAR",
+      "postgres": "VARCHAR",
+      "oracle": "NVARCHAR2",
+      "description": "Data type DType.NVARCHAR mapping across dialects"
+    },
+    {
+      "id": "DIFF_0142",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "ROWVERSION",
+      "mysql": "VARBINARY",
+      "postgres": "BYTEA",
+      "oracle": "BLOB",
+      "description": "Data type DType.ROWVERSION mapping across dialects"
+    },
+    {
+      "id": "DIFF_0143",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "SMALLDATETIME",
+      "mysql": "DATETIME",
+      "postgres": "TIMESTAMP",
+      "oracle": "TIMESTAMP",
+      "description": "Data type DType.SMALLDATETIME mapping across dialects"
+    },
+    {
+      "id": "DIFF_0144",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "SMALLINT",
+      "mysql": "(default: SMALLINT)",
+      "postgres": "(default: SMALLINT)",
+      "oracle": "SMALLINT",
+      "description": "Data type DType.SMALLINT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0145",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "TEXT",
+      "mysql": "(default: TEXT)",
+      "postgres": "(default: TEXT)",
+      "oracle": "CLOB",
+      "description": "Data type DType.TEXT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0146",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "TIMESTAMP",
+      "mysql": "DATETIME",
+      "postgres": "(default: TIMESTAMP)",
+      "oracle": "(default: TIMESTAMP)",
+      "description": "Data type DType.TIMESTAMP mapping across dialects"
+    },
+    {
+      "id": "DIFF_0147",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "TIMESTAMPLTZ",
+      "mysql": "TIMESTAMP",
+      "postgres": "(default: TIMESTAMPLTZ)",
+      "oracle": "(default: TIMESTAMPLTZ)",
+      "description": "Data type DType.TIMESTAMPLTZ mapping across dialects"
+    },
+    {
+      "id": "DIFF_0148",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "TIMESTAMPNTZ",
+      "mysql": "DATETIME",
+      "postgres": "TIMESTAMP",
+      "oracle": "TIMESTAMP",
+      "description": "Data type DType.TIMESTAMPNTZ mapping across dialects"
+    },
+    {
+      "id": "DIFF_0149",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "TIMESTAMPTZ",
+      "mysql": "TIMESTAMP",
+      "postgres": "(default: TIMESTAMPTZ)",
+      "oracle": "TIMESTAMP",
+      "description": "Data type DType.TIMESTAMPTZ mapping across dialects"
+    },
+    {
+      "id": "DIFF_0150",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "TIMETZ",
+      "mysql": "(default: TIMETZ)",
+      "postgres": "(default: TIMETZ)",
+      "oracle": "TIME",
+      "description": "Data type DType.TIMETZ mapping across dialects"
+    },
+    {
+      "id": "DIFF_0151",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "TINYINT",
+      "mysql": "(default: TINYINT)",
+      "postgres": "SMALLINT",
+      "oracle": "SMALLINT",
+      "description": "Data type DType.TINYINT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0152",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "UBIGINT",
+      "mysql": "BIGINT",
+      "postgres": "(default: UBIGINT)",
+      "oracle": "(default: UBIGINT)",
+      "description": "Data type DType.UBIGINT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0153",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "UDECIMAL",
+      "mysql": "DECIMAL",
+      "postgres": "(default: UDECIMAL)",
+      "oracle": "(default: UDECIMAL)",
+      "description": "Data type DType.UDECIMAL mapping across dialects"
+    },
+    {
+      "id": "DIFF_0154",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "UDOUBLE",
+      "mysql": "DOUBLE",
+      "postgres": "(default: UDOUBLE)",
+      "oracle": "(default: UDOUBLE)",
+      "description": "Data type DType.UDOUBLE mapping across dialects"
+    },
+    {
+      "id": "DIFF_0155",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "UINT",
+      "mysql": "INT",
+      "postgres": "(default: UINT)",
+      "oracle": "(default: UINT)",
+      "description": "Data type DType.UINT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0156",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "UMEDIUMINT",
+      "mysql": "MEDIUMINT",
+      "postgres": "(default: UMEDIUMINT)",
+      "oracle": "(default: UMEDIUMINT)",
+      "description": "Data type DType.UMEDIUMINT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0157",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "USMALLINT",
+      "mysql": "SMALLINT",
+      "postgres": "(default: USMALLINT)",
+      "oracle": "(default: USMALLINT)",
+      "description": "Data type DType.USMALLINT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0158",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "UTINYINT",
+      "mysql": "TINYINT",
+      "postgres": "(default: UTINYINT)",
+      "oracle": "(default: UTINYINT)",
+      "description": "Data type DType.UTINYINT mapping across dialects"
+    },
+    {
+      "id": "DIFF_0159",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "VARBINARY",
+      "mysql": "(default: VARBINARY)",
+      "postgres": "BYTEA",
+      "oracle": "BLOB",
+      "description": "Data type DType.VARBINARY mapping across dialects"
+    },
+    {
+      "id": "DIFF_0160",
+      "category": "Data Type",
+      "subcategory": "TYPE_MAPPING",
+      "feature": "VARCHAR",
+      "mysql": "(default: VARCHAR)",
+      "postgres": "(default: VARCHAR)",
+      "oracle": "VARCHAR2",
+      "description": "Data type DType.VARCHAR mapping across dialects"
+    },
+    {
+      "id": "DIFF_0161",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "AnyValue",
+      "mysql": "base/default",
+      "postgres": "func:_versioned_anyvalue_sql",
+      "oracle": "base/default",
+      "description": "AST expression AnyValue has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0162",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ArrayAgg",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression ArrayAgg has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0163",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ArrayAppend",
+      "mysql": "base/default",
+      "postgres": "func:_array_append_sql",
+      "oracle": "base/default",
+      "description": "AST expression ArrayAppend has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0164",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ArrayConcat",
+      "mysql": "base/default",
+      "postgres": "func:_array_concat_sql",
+      "oracle": "base/default",
+      "description": "AST expression ArrayConcat has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0165",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ArrayFilter",
+      "mysql": "base/default",
+      "postgres": "func:filter_array_using_unnest",
+      "oracle": "base/default",
+      "description": "AST expression ArrayFilter has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0166",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ArrayPrepend",
+      "mysql": "base/default",
+      "postgres": "func:_array_append_sql",
+      "oracle": "base/default",
+      "description": "AST expression ArrayPrepend has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0167",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "BitwiseAndAgg",
+      "mysql": "func:<lambda>",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression BitwiseAndAgg has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0168",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "BitwiseCount",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression BitwiseCount has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0169",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "BitwiseOrAgg",
+      "mysql": "func:<lambda>",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression BitwiseOrAgg has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0170",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "BitwiseXor",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression BitwiseXor has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0171",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "BitwiseXorAgg",
+      "mysql": "func:<lambda>",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression BitwiseXorAgg has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0172",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Chr",
+      "mysql": "func:<lambda>",
+      "postgres": "method:chr_sql",
+      "oracle": "method:chr_sql",
+      "description": "AST expression Chr has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0173",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ColumnDef",
+      "mysql": "base/default",
+      "postgres": "func:_to_sql",
+      "oracle": "base/default",
+      "description": "AST expression ColumnDef has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0174",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "CommentColumnConstraint",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression CommentColumnConstraint has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0175",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "CountIf",
+      "mysql": "base/default",
+      "postgres": "func:count_if_to_sum",
+      "oracle": "base/default",
+      "description": "AST expression CountIf has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0176",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "CurrentDate",
+      "mysql": "func:no_paren_current_date_sql",
+      "postgres": "func:no_paren_current_date_sql",
+      "oracle": "base/default",
+      "description": "AST expression CurrentDate has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0177",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "CurrentTimestamp",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression CurrentTimestamp has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0178",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "CurrentUser",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression CurrentUser has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0179",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "CurrentVersion",
+      "mysql": "func:<lambda>",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression CurrentVersion has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0180",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "DateAdd",
+      "mysql": "func:func",
+      "postgres": "func:func",
+      "oracle": "base/default",
+      "description": "AST expression DateAdd has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0181",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "DateDiff",
+      "mysql": "func:func",
+      "postgres": "func:_date_diff_sql",
+      "oracle": "base/default",
+      "description": "AST expression DateDiff has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0182",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "DateStrToDate",
+      "mysql": "func:datestrtodate_sql",
+      "postgres": "func:datestrtodate_sql",
+      "oracle": "func:<lambda>",
+      "description": "AST expression DateStrToDate has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0183",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "DateSub",
+      "mysql": "func:func",
+      "postgres": "func:func",
+      "oracle": "base/default",
+      "description": "AST expression DateSub has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0184",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "DateTrunc",
+      "mysql": "func:_date_trunc_sql",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression DateTrunc has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0185",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Day",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression Day has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0186",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "DayOfMonth",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression DayOfMonth has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0187",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "DayOfWeek",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression DayOfWeek has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0188",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "DayOfYear",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression DayOfYear has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0189",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "EuclideanDistance",
+      "mysql": "base/default",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression EuclideanDistance has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0190",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Explode",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression Explode has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0191",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ExplodingGenerateSeries",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression ExplodingGenerateSeries has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0192",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "GenerateSeries",
+      "mysql": "base/default",
+      "postgres": "func:_generate_series_sql",
+      "oracle": "base/default",
+      "description": "AST expression GenerateSeries has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0193",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Getbit",
+      "mysql": "base/default",
+      "postgres": "func:getbit_sql",
+      "oracle": "base/default",
+      "description": "AST expression Getbit has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0194",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "GroupConcat",
+      "mysql": "func:<lambda>",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression GroupConcat has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0195",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ILike",
+      "mysql": "func:no_ilike_sql",
+      "postgres": "method:ilike_sql",
+      "oracle": "func:no_ilike_sql",
+      "description": "AST expression ILike has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0196",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "IntDiv",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression IntDiv has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0197",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONArrayAgg",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression JSONArrayAgg has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0198",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONBContains",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression JSONBContains has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0199",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONBExtract",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression JSONBExtract has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0200",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONBExtractScalar",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression JSONBExtractScalar has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0201",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONBObjectAgg",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression JSONBObjectAgg has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0202",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONExtract",
+      "mysql": "base/default",
+      "postgres": "func:_generate",
+      "oracle": "base/default",
+      "description": "AST expression JSONExtract has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0203",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONExtractScalar",
+      "mysql": "func:arrow_json_extract_sql",
+      "postgres": "func:_generate",
+      "oracle": "base/default",
+      "description": "AST expression JSONExtractScalar has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0204",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONPathFilter",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression JSONPathFilter has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0205",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONPathKey",
+      "mysql": "func:<lambda>",
+      "postgres": "func:json_path_key_only_name",
+      "oracle": "func:<lambda>",
+      "description": "AST expression JSONPathKey has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0206",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONPathRecursive",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression JSONPathRecursive has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0207",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONPathScript",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression JSONPathScript has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0208",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONPathSelector",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression JSONPathSelector has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0209",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONPathSlice",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression JSONPathSlice has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0210",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONPathUnion",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression JSONPathUnion has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0211",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "JSONPathWildcard",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression JSONPathWildcard has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0212",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "LastDay",
+      "mysql": "base/default",
+      "postgres": "func:no_last_day_sql",
+      "oracle": "base/default",
+      "description": "AST expression LastDay has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0213",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Length",
+      "mysql": "func:length_or_char_length_sql",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression Length has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0214",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Levenshtein",
+      "mysql": "base/default",
+      "postgres": "func:_levenshtein_sql",
+      "oracle": "base/default",
+      "description": "AST expression Levenshtein has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0215",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "MapFromEntries",
+      "mysql": "base/default",
+      "postgres": "func:no_map_from_entries_sql",
+      "oracle": "base/default",
+      "description": "AST expression MapFromEntries has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0216",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Max",
+      "mysql": "func:max_or_greatest",
+      "postgres": "func:max_or_greatest",
+      "oracle": "base/default",
+      "description": "AST expression Max has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0217",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Merge",
+      "mysql": "method:merge_sql",
+      "postgres": "func:merge_without_target_sql",
+      "oracle": "method:merge_sql",
+      "description": "AST expression Merge has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0218",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Min",
+      "mysql": "func:min_or_least",
+      "postgres": "func:min_or_least",
+      "oracle": "base/default",
+      "description": "AST expression Min has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0219",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Mod",
+      "mysql": "method:mod_sql",
+      "postgres": "method:mod_sql",
+      "oracle": "func:<lambda>",
+      "description": "AST expression Mod has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0220",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Month",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression Month has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0221",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "NullSafeEQ",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression NullSafeEQ has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0222",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "NullSafeNEQ",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression NullSafeNEQ has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0223",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "NumberToStr",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression NumberToStr has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0224",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ParseJSON",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression ParseJSON has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0225",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "PartitionedByProperty",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression PartitionedByProperty has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0226",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "PercentileCont",
+      "mysql": "base/default",
+      "postgres": "func:_to_sql",
+      "oracle": "base/default",
+      "description": "AST expression PercentileCont has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0227",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "PercentileDisc",
+      "mysql": "base/default",
+      "postgres": "func:_to_sql",
+      "oracle": "base/default",
+      "description": "AST expression PercentileDisc has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0228",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Pivot",
+      "mysql": "func:no_pivot_sql",
+      "postgres": "func:no_pivot_sql",
+      "oracle": "method:pivot_sql",
+      "description": "AST expression Pivot has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0229",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Rand",
+      "mysql": "method:rand_sql",
+      "postgres": "func:<lambda>",
+      "oracle": "func:<lambda>",
+      "description": "AST expression Rand has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0230",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "RegexpILike",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression RegexpILike has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0231",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "RegexpLike",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression RegexpLike has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0232",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "RegexpReplace",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression RegexpReplace has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0233",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Round",
+      "mysql": "base/default",
+      "postgres": "func:_round_sql",
+      "oracle": "base/default",
+      "description": "AST expression Round has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0234",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "SHA2",
+      "mysql": "base/default",
+      "postgres": "func:sha256_sql",
+      "oracle": "base/default",
+      "description": "AST expression SHA2 has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0235",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "SHA2Digest",
+      "mysql": "base/default",
+      "postgres": "func:sha2_digest_sql",
+      "oracle": "base/default",
+      "description": "AST expression SHA2Digest has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0236",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "StrToDate",
+      "mysql": "func:_str_to_date_sql",
+      "postgres": "func:<lambda>",
+      "oracle": "func:<lambda>",
+      "description": "AST expression StrToDate has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0237",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "StrToTime",
+      "mysql": "func:_str_to_date_sql",
+      "postgres": "func:<lambda>",
+      "oracle": "func:<lambda>",
+      "description": "AST expression StrToTime has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0238",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "StructExtract",
+      "mysql": "base/default",
+      "postgres": "func:struct_extract_sql",
+      "oracle": "base/default",
+      "description": "AST expression StructExtract has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0239",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Stuff",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression Stuff has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0240",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Subquery",
+      "mysql": "method:subquery_sql",
+      "postgres": "method:subquery_sql",
+      "oracle": "func:<lambda>",
+      "description": "AST expression Subquery has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0241",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Substring",
+      "mysql": "base/default",
+      "postgres": "func:_substring_sql",
+      "oracle": "func:<lambda>",
+      "description": "AST expression Substring has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0242",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Systimestamp",
+      "mysql": "base/default",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression Systimestamp has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0243",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Table",
+      "mysql": "method:table_sql",
+      "postgres": "method:table_sql",
+      "oracle": "func:<lambda>",
+      "description": "AST expression Table has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0244",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TableSample",
+      "mysql": "func:no_tablesample_sql",
+      "postgres": "base/default",
+      "oracle": "func:<lambda>",
+      "description": "AST expression TableSample has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0245",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimeFromParts",
+      "mysql": "func:<lambda>",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression TimeFromParts has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0246",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimeStrToTime",
+      "mysql": "func:<lambda>",
+      "postgres": "func:timestrtotime_sql",
+      "oracle": "base/default",
+      "description": "AST expression TimeStrToTime has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0247",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimeStrToUnix",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression TimeStrToUnix has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0248",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimeToStr",
+      "mysql": "func:func",
+      "postgres": "func:<lambda>",
+      "oracle": "func:<lambda>",
+      "description": "AST expression TimeToStr has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0249",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimeToUnix",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression TimeToUnix has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0250",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimestampAdd",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression TimestampAdd has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0251",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimestampDiff",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression TimestampDiff has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0252",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimestampFromParts",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression TimestampFromParts has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0253",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimestampSub",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression TimestampSub has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0254",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TimestampTrunc",
+      "mysql": "base/default",
+      "postgres": "func:_timestamptrunc_sql",
+      "oracle": "base/default",
+      "description": "AST expression TimestampTrunc has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0255",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ToChar",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "func:<lambda>",
+      "description": "AST expression ToChar has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0256",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "ToNumber",
+      "mysql": "base/default",
+      "postgres": "base/default",
+      "oracle": "func:to_number_with_nls_param",
+      "description": "AST expression ToNumber has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0257",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Trim",
+      "mysql": "func:trim_sql",
+      "postgres": "func:trim_sql",
+      "oracle": "func:_trim_sql",
+      "description": "AST expression Trim has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0258",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Trunc",
+      "mysql": "func:<lambda>",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression Trunc has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0259",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TryCast",
+      "mysql": "func:no_trycast_sql",
+      "postgres": "func:no_trycast_sql",
+      "oracle": "base/default",
+      "description": "AST expression TryCast has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0260",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TsOrDsAdd",
+      "mysql": "func:func",
+      "postgres": "func:func",
+      "oracle": "base/default",
+      "description": "AST expression TsOrDsAdd has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0261",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TsOrDsDiff",
+      "mysql": "func:<lambda>",
+      "postgres": "func:_date_diff_sql",
+      "oracle": "base/default",
+      "description": "AST expression TsOrDsDiff has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0262",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "TsOrDsToDate",
+      "mysql": "func:_ts_or_ds_to_date_sql",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression TsOrDsToDate has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0263",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "UnixToTime",
+      "mysql": "func:_unix_to_time_sql",
+      "postgres": "func:_unix_to_time_sql",
+      "oracle": "func:<lambda>",
+      "description": "AST expression UnixToTime has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0264",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Uuid",
+      "mysql": "method:uuid_sql",
+      "postgres": "func:<lambda>",
+      "oracle": "method:uuid_sql",
+      "description": "AST expression Uuid has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0265",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Variance",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression Variance has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0266",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "VariancePop",
+      "mysql": "base/default",
+      "postgres": "func:<lambda>",
+      "oracle": "base/default",
+      "description": "AST expression VariancePop has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0267",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Week",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression Week has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0268",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "WeekOfYear",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression WeekOfYear has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0269",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Xor",
+      "mysql": "method:xor_sql",
+      "postgres": "func:bool_xor_sql",
+      "oracle": "method:xor_sql",
+      "description": "AST expression Xor has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0270",
+      "category": "Expression",
+      "subcategory": "Generator.TRANSFORMS",
+      "feature": "Year",
+      "mysql": "func:func",
+      "postgres": "base/default",
+      "oracle": "base/default",
+      "description": "AST expression Year has different SQL generation logic across dialects"
+    },
+    {
+      "id": "DIFF_0271",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "TABLE_HINTS",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "False",
+      "description": "Whether TABLE HINTS are supported"
+    },
+    {
+      "id": "DIFF_0272",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "QUERY_HINTS",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether QUERY HINTS are supported"
+    },
+    {
+      "id": "DIFF_0273",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "LIMIT_FETCH",
+      "mysql": "LIMIT",
+      "postgres": "ALL",
+      "oracle": "FETCH",
+      "description": "LIMIT/FETCH syntax (ALL/LIMIT/FETCH)"
+    },
+    {
+      "id": "DIFF_0274",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "LIMIT_ONLY_LITERALS",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "False",
+      "description": "Whether LIMIT only supports literals"
+    },
+    {
+      "id": "DIFF_0275",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "SUPPORTS_DECODE_CASE",
+      "mysql": "False",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether DECODE/CASE is supported"
+    },
+    {
+      "id": "DIFF_0276",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "NULL_ORDERING_SUPPORTED",
+      "mysql": "None",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether NULLS FIRST/LAST is supported in ORDER BY"
+    },
+    {
+      "id": "DIFF_0277",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "SINGLE_STRING_INTERVAL",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether INTERVAL only uses single string ('1 day')"
+    },
+    {
+      "id": "DIFF_0278",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "INTERVAL_ALLOWS_PLURAL_FORM",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether INTERVAL allows plural form (days vs day)"
+    },
+    {
+      "id": "DIFF_0279",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "RENAME_TABLE_WITH_DB",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether RENAME TABLE supports database name prefix"
+    },
+    {
+      "id": "DIFF_0280",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "VALUES_AS_TABLE",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether VALUES can be used as table reference"
+    },
+    {
+      "id": "DIFF_0281",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "NVL2_SUPPORTED",
+      "mysql": "False",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether NVL2 function is supported"
+    },
+    {
+      "id": "DIFF_0282",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "LAST_DAY_SUPPORTS_DATE_PART",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether LAST_DAY supports date part parameter"
+    },
+    {
+      "id": "DIFF_0283",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "SUPPORTS_TO_NUMBER",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether TO_NUMBER function is supported"
+    },
+    {
+      "id": "DIFF_0284",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "SUPPORTS_MEDIAN",
+      "mysql": "False",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether MEDIAN aggregate function is supported"
+    },
+    {
+      "id": "DIFF_0285",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "SUPPORTS_SELECT_INTO",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether SELECT...INTO is supported"
+    },
+    {
+      "id": "DIFF_0286",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "SUPPORTS_WINDOW_EXCLUDE",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether window EXCLUDE clause is supported"
+    },
+    {
+      "id": "DIFF_0287",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "VARCHAR_REQUIRES_SIZE",
+      "mysql": "True",
+      "postgres": "N/A",
+      "oracle": "N/A",
+      "description": "Whether VARCHAR must specify size"
+    },
+    {
+      "id": "DIFF_0288",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "TABLESAMPLE_KEYWORDS",
+      "mysql": "TABLESAMPLE",
+      "postgres": "TABLESAMPLE",
+      "oracle": "SAMPLE",
+      "description": "TABLESAMPLE keywords"
+    },
+    {
+      "id": "DIFF_0289",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "ALTER_TABLE_INCLUDE_COLUMN_KEYWORD",
+      "mysql": "True",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether ALTER TABLE ADD requires COLUMN keyword"
+    },
+    {
+      "id": "DIFF_0290",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "DUPLICATE_KEY_UPDATE_WITH_SET",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether ON DUPLICATE KEY UPDATE requires SET"
+    },
+    {
+      "id": "DIFF_0291",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "JSON_TYPE_REQUIRED_FOR_EXTRACTION",
+      "mysql": "True",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether JSON extraction requires JSON type"
+    },
+    {
+      "id": "DIFF_0292",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "JSON_PATH_BRACKETED_KEY_SUPPORTED",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether JSON PATH supports bracketed key"
+    },
+    {
+      "id": "DIFF_0293",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "PAD_FILL_PATTERN_IS_REQUIRED",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "False",
+      "description": "Whether PAD function must specify fill character"
+    },
+    {
+      "id": "DIFF_0294",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "WRAP_DERIVED_VALUES",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether derived values need parentheses"
+    },
+    {
+      "id": "DIFF_0295",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "MULTI_ARG_DISTINCT",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether DISTINCT supports multiple arguments"
+    },
+    {
+      "id": "DIFF_0296",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "CAN_IMPLEMENT_ARRAY_ANY",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether ARRAY ANY is supported"
+    },
+    {
+      "id": "DIFF_0297",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "SUPPORTS_UNLOGGED_TABLES",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether UNLOGGED TABLE is supported"
+    },
+    {
+      "id": "DIFF_0298",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "LIKE_PROPERTY_INSIDE_SCHEMA",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether LIKE property is inside schema"
+    },
+    {
+      "id": "DIFF_0299",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "COPY_HAS_INTO_KEYWORD",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether COPY statement has INTO keyword"
+    },
+    {
+      "id": "DIFF_0300",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "SUPPORTS_BETWEEN_FLAGS",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "False",
+      "description": "Whether BETWEEN flags are supported"
+    },
+    {
+      "id": "DIFF_0301",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "DATA_TYPE_SPECIFIERS_ALLOWED",
+      "mysql": "False",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether data type allows additional specifiers"
+    },
+    {
+      "id": "DIFF_0302",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "TZ_TO_WITH_TIME_ZONE",
+      "mysql": "False",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether timezone uses WITH TIME ZONE syntax"
+    },
+    {
+      "id": "DIFF_0303",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "PARAMETER_TOKEN",
+      "mysql": "@",
+      "postgres": "$",
+      "oracle": "@",
+      "description": "Parameter placeholder token"
+    },
+    {
+      "id": "DIFF_0304",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "NAMED_PLACEHOLDER_TOKEN",
+      "mysql": ":",
+      "postgres": "%",
+      "oracle": ":",
+      "description": "Named placeholder token"
+    },
+    {
+      "id": "DIFF_0305",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "TABLESAMPLE_SIZE_IS_ROWS",
+      "mysql": "True",
+      "postgres": "False",
+      "oracle": "True",
+      "description": "Whether TABLESAMPLE size is in rows"
+    },
+    {
+      "id": "DIFF_0306",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "TABLESAMPLE_SEED_KEYWORD",
+      "mysql": "SEED",
+      "postgres": "REPEATABLE",
+      "oracle": "SEED",
+      "description": "TABLESAMPLE seed keyword"
+    },
+    {
+      "id": "DIFF_0307",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "QUERY_HINT_SEP",
+      "mysql": " ",
+      "postgres": ", ",
+      "oracle": " ",
+      "description": "Query hint separator"
+    },
+    {
+      "id": "DIFF_0308",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "INOUT_SEPARATOR",
+      "mysql": " ",
+      "postgres": "",
+      "oracle": " ",
+      "description": "IN/OUT parameter mode separator"
+    },
+    {
+      "id": "DIFF_0309",
+      "category": "Generator Config",
+      "subcategory": "Generator Class Property",
+      "feature": "UPDATE_STATEMENT_SUPPORTS_FROM",
+      "mysql": "False",
+      "postgres": "True",
+      "oracle": "True",
+      "description": "Whether UPDATE statement supports FROM clause"
+    },
+    {
+      "id": "DIFF_0310",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "BIT_COUNT",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: BIT_COUNT"
+    },
+    {
+      "id": "DIFF_0311",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "CONVERT_TZ",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: CONVERT_TZ"
+    },
+    {
+      "id": "DIFF_0312",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "CURDATE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: CURDATE"
+    },
+    {
+      "id": "DIFF_0313",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "CURTIME",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: CURTIME"
+    },
+    {
+      "id": "DIFF_0314",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "DATABASE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: DATABASE"
+    },
+    {
+      "id": "DIFF_0315",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "DATE_FORMAT",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: DATE_FORMAT"
+    },
+    {
+      "id": "DIFF_0316",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "FROM_UNIXTIME",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: FROM_UNIXTIME"
+    },
+    {
+      "id": "DIFF_0317",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "ISNULL",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: ISNULL"
+    },
+    {
+      "id": "DIFF_0318",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "MAKETIME",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: MAKETIME"
+    },
+    {
+      "id": "DIFF_0319",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "SCHEMA",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "MySQL exclusive function: SCHEMA"
+    },
+    {
+      "id": "DIFF_0320",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "DIV",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: DIV"
+    },
+    {
+      "id": "DIFF_0321",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "JSONB_OBJECT_AGG",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: JSONB_OBJECT_AGG"
+    },
+    {
+      "id": "DIFF_0322",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "JSON_EXTRACT_PATH",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: JSON_EXTRACT_PATH"
+    },
+    {
+      "id": "DIFF_0323",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "JSON_OBJECT_AGG",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: JSON_OBJECT_AGG"
+    },
+    {
+      "id": "DIFF_0324",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "LEVENSHTEIN_LESS_EQUAL",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: LEVENSHTEIN_LESS_EQUAL"
+    },
+    {
+      "id": "DIFF_0325",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "MAKE_TIME",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: MAKE_TIME"
+    },
+    {
+      "id": "DIFF_0326",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "MAKE_TIMESTAMP",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: MAKE_TIMESTAMP"
+    },
+    {
+      "id": "DIFF_0327",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "NOW",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: NOW"
+    },
+    {
+      "id": "DIFF_0328",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "SHA256",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: SHA256"
+    },
+    {
+      "id": "DIFF_0329",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "SHA384",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: SHA384"
+    },
+    {
+      "id": "DIFF_0330",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "SHA512",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "oracle": "✗ Not supported",
+      "description": "PostgreSQL exclusive function: SHA512"
+    },
+    {
+      "id": "DIFF_0331",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "L2_DISTANCE",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive function: L2_DISTANCE"
+    },
+    {
+      "id": "DIFF_0332",
+      "category": "Function",
+      "subcategory": "Parser Exclusive Function",
+      "feature": "SQUARE",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "postgres": "✗ Not supported",
+      "description": "Oracle exclusive function: SQUARE"
+    },
+    {
+      "id": "DIFF_0333",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "BIT_COUNT",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: BIT_COUNT"
+    },
+    {
+      "id": "DIFF_0334",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "CONVERT_TZ",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: CONVERT_TZ"
+    },
+    {
+      "id": "DIFF_0335",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "CURDATE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: CURDATE"
+    },
+    {
+      "id": "DIFF_0336",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "CURTIME",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: CURTIME"
+    },
+    {
+      "id": "DIFF_0337",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "DATABASE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: DATABASE"
+    },
+    {
+      "id": "DIFF_0338",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "DATE_FORMAT",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: DATE_FORMAT"
+    },
+    {
+      "id": "DIFF_0339",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "FROM_UNIXTIME",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: FROM_UNIXTIME"
+    },
+    {
+      "id": "DIFF_0340",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "ISNULL",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: ISNULL"
+    },
+    {
+      "id": "DIFF_0341",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "MAKETIME",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: MAKETIME"
+    },
+    {
+      "id": "DIFF_0342",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/PostgreSQL not)",
+      "feature": "SCHEMA",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by MySQL but not PostgreSQL: SCHEMA"
+    },
+    {
+      "id": "DIFF_0343",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "DIV",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: DIV"
+    },
+    {
+      "id": "DIFF_0344",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "JSONB_OBJECT_AGG",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: JSONB_OBJECT_AGG"
+    },
+    {
+      "id": "DIFF_0345",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "JSON_EXTRACT_PATH",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: JSON_EXTRACT_PATH"
+    },
+    {
+      "id": "DIFF_0346",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "JSON_OBJECT_AGG",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: JSON_OBJECT_AGG"
+    },
+    {
+      "id": "DIFF_0347",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "LEVENSHTEIN_LESS_EQUAL",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: LEVENSHTEIN_LESS_EQUAL"
+    },
+    {
+      "id": "DIFF_0348",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "MAKE_TIME",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: MAKE_TIME"
+    },
+    {
+      "id": "DIFF_0349",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "MAKE_TIMESTAMP",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: MAKE_TIMESTAMP"
+    },
+    {
+      "id": "DIFF_0350",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "NOW",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: NOW"
+    },
+    {
+      "id": "DIFF_0351",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "SHA256",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: SHA256"
+    },
+    {
+      "id": "DIFF_0352",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "SHA384",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: SHA384"
+    },
+    {
+      "id": "DIFF_0353",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "SHA512",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: SHA512"
+    },
+    {
+      "id": "DIFF_0354",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "TO_DATE",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: TO_DATE"
+    },
+    {
+      "id": "DIFF_0355",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/MySQL not)",
+      "feature": "TO_TIMESTAMP",
+      "postgres": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not MySQL: TO_TIMESTAMP"
+    },
+    {
+      "id": "DIFF_0356",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "BIT_AND",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: BIT_AND"
+    },
+    {
+      "id": "DIFF_0357",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "BIT_COUNT",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: BIT_COUNT"
+    },
+    {
+      "id": "DIFF_0358",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "BIT_OR",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: BIT_OR"
+    },
+    {
+      "id": "DIFF_0359",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "BIT_XOR",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: BIT_XOR"
+    },
+    {
+      "id": "DIFF_0360",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "CONVERT_TZ",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: CONVERT_TZ"
+    },
+    {
+      "id": "DIFF_0361",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "CURDATE",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: CURDATE"
+    },
+    {
+      "id": "DIFF_0362",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "CURTIME",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: CURTIME"
+    },
+    {
+      "id": "DIFF_0363",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "DATABASE",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: DATABASE"
+    },
+    {
+      "id": "DIFF_0364",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "DATE_FORMAT",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: DATE_FORMAT"
+    },
+    {
+      "id": "DIFF_0365",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "FROM_UNIXTIME",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: FROM_UNIXTIME"
+    },
+    {
+      "id": "DIFF_0366",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "ISNULL",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: ISNULL"
+    },
+    {
+      "id": "DIFF_0367",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "MAKETIME",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: MAKETIME"
+    },
+    {
+      "id": "DIFF_0368",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "SCHEMA",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: SCHEMA"
+    },
+    {
+      "id": "DIFF_0369",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "TO_BOOLEAN",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: TO_BOOLEAN"
+    },
+    {
+      "id": "DIFF_0370",
+      "category": "Function",
+      "subcategory": "Parser Function (MySQL has/Oracle not)",
+      "feature": "VERSION",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by MySQL but not Oracle: VERSION"
+    },
+    {
+      "id": "DIFF_0371",
+      "category": "Function",
+      "subcategory": "Parser Function (Oracle has/MySQL not)",
+      "feature": "L2_DISTANCE",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by Oracle but not MySQL: L2_DISTANCE"
+    },
+    {
+      "id": "DIFF_0372",
+      "category": "Function",
+      "subcategory": "Parser Function (Oracle has/MySQL not)",
+      "feature": "SQUARE",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by Oracle but not MySQL: SQUARE"
+    },
+    {
+      "id": "DIFF_0373",
+      "category": "Function",
+      "subcategory": "Parser Function (Oracle has/MySQL not)",
+      "feature": "TO_DATE",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by Oracle but not MySQL: TO_DATE"
+    },
+    {
+      "id": "DIFF_0374",
+      "category": "Function",
+      "subcategory": "Parser Function (Oracle has/MySQL not)",
+      "feature": "TO_TIMESTAMP",
+      "oracle": "✓ Supported",
+      "mysql": "✗ Not supported",
+      "description": "Function supported by Oracle but not MySQL: TO_TIMESTAMP"
+    },
+    {
+      "id": "DIFF_0375",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "BIT_AND",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: BIT_AND"
+    },
+    {
+      "id": "DIFF_0376",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "BIT_OR",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: BIT_OR"
+    },
+    {
+      "id": "DIFF_0377",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "BIT_XOR",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: BIT_XOR"
+    },
+    {
+      "id": "DIFF_0378",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "DIV",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: DIV"
+    },
+    {
+      "id": "DIFF_0379",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "JSONB_OBJECT_AGG",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: JSONB_OBJECT_AGG"
+    },
+    {
+      "id": "DIFF_0380",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "JSON_EXTRACT_PATH",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: JSON_EXTRACT_PATH"
+    },
+    {
+      "id": "DIFF_0381",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "JSON_OBJECT_AGG",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: JSON_OBJECT_AGG"
+    },
+    {
+      "id": "DIFF_0382",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "LEVENSHTEIN_LESS_EQUAL",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: LEVENSHTEIN_LESS_EQUAL"
+    },
+    {
+      "id": "DIFF_0383",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "MAKE_TIME",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: MAKE_TIME"
+    },
+    {
+      "id": "DIFF_0384",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "MAKE_TIMESTAMP",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: MAKE_TIMESTAMP"
+    },
+    {
+      "id": "DIFF_0385",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "NOW",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: NOW"
+    },
+    {
+      "id": "DIFF_0386",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "SHA256",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: SHA256"
+    },
+    {
+      "id": "DIFF_0387",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "SHA384",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: SHA384"
+    },
+    {
+      "id": "DIFF_0388",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "SHA512",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: SHA512"
+    },
+    {
+      "id": "DIFF_0389",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "TO_BOOLEAN",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: TO_BOOLEAN"
+    },
+    {
+      "id": "DIFF_0390",
+      "category": "Function",
+      "subcategory": "Parser Function (PostgreSQL has/Oracle not)",
+      "feature": "VERSION",
+      "postgres": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "Function supported by PostgreSQL but not Oracle: VERSION"
+    },
+    {
+      "id": "DIFF_0391",
+      "category": "Function",
+      "subcategory": "Parser Function (Oracle has/PostgreSQL not)",
+      "feature": "L2_DISTANCE",
+      "oracle": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by Oracle but not PostgreSQL: L2_DISTANCE"
+    },
+    {
+      "id": "DIFF_0392",
+      "category": "Function",
+      "subcategory": "Parser Function (Oracle has/PostgreSQL not)",
+      "feature": "SQUARE",
+      "oracle": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "Function supported by Oracle but not PostgreSQL: SQUARE"
+    },
+    {
+      "id": "DIFF_0393",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "ARRAY_PREPEND",
+      "mysql": "build_array_prepend",
+      "postgres": "<lambda>",
+      "oracle": "build_array_prepend",
+      "description": "function ARRAY_PREPEND across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0394",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "DATE",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function DATE across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0395",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "DATE_ADD",
+      "mysql": "_builder",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function DATE_ADD across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0396",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "DATE_SUB",
+      "mysql": "_builder",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function DATE_SUB across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0397",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "DATE_TRUNC",
+      "mysql": "from_arg_list",
+      "postgres": "build_timestamp_trunc",
+      "oracle": "from_arg_list",
+      "description": "function DATE_TRUNC across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0398",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "DAY",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function DAY across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0399",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "DAYOFMONTH",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function DAYOFMONTH across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0400",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "DAYOFWEEK",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function DAYOFWEEK across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0401",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "DAYOFYEAR",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function DAYOFYEAR across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0402",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "GENERATE_SERIES",
+      "mysql": "from_arg_list",
+      "postgres": "_build_generate_series",
+      "oracle": "from_arg_list",
+      "description": "function GENERATE_SERIES across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0403",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "GET_BIT",
+      "mysql": "from_arg_list",
+      "postgres": "<lambda>",
+      "oracle": "from_arg_list",
+      "description": "function GET_BIT across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0404",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "LENGTH",
+      "mysql": "<lambda>",
+      "postgres": "<lambda>",
+      "oracle": "from_arg_list",
+      "description": "function LENGTH across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0405",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "MONTH",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function MONTH across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0406",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "MONTHNAME",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function MONTHNAME across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0407",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "NVL",
+      "mysql": "build_coalesce",
+      "postgres": "build_coalesce",
+      "oracle": "<lambda>",
+      "description": "function NVL across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0408",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "REGEXP_REPLACE",
+      "mysql": "from_arg_list",
+      "postgres": "_build_regexp_replace",
+      "oracle": "from_arg_list",
+      "description": "function REGEXP_REPLACE across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0409",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "STR_TO_DATE",
+      "mysql": "_str_to_date",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function STR_TO_DATE across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0410",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "TIMESTAMPDIFF",
+      "mysql": "_builder",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function TIMESTAMPDIFF across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0411",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "TO_CHAR",
+      "mysql": "from_arg_list",
+      "postgres": "_builder",
+      "oracle": "build_timetostr_or_tochar",
+      "description": "function TO_CHAR across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0412",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "TO_DAYS",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function TO_DAYS across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0413",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "TRUNC",
+      "mysql": "from_arg_list",
+      "postgres": "from_arg_list",
+      "oracle": "<lambda>",
+      "description": "function TRUNC across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0414",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "UNNEST",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "<lambda>",
+      "description": "function UNNEST across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0415",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "WEEK",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function WEEK across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0416",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "WEEKOFYEAR",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function WEEKOFYEAR across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0417",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "WIDTH_BUCKET",
+      "mysql": "from_arg_list",
+      "postgres": "<lambda>",
+      "oracle": "from_arg_list",
+      "description": "function WIDTH_BUCKET across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0418",
+      "category": "Function",
+      "subcategory": "Parser Function Parsing Difference",
+      "feature": "YEAR",
+      "mysql": "<lambda>",
+      "postgres": "from_arg_list",
+      "oracle": "from_arg_list",
+      "description": "function YEAR across dialectsparses to different AST nodes"
+    },
+    {
+      "id": "DIFF_0419",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "CONVERT",
+      "mysql": "✓",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Function parser (requires special syntax parsing): CONVERT only supported in mysql, postgres"
+    },
+    {
+      "id": "DIFF_0420",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "DATE_PART",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Function parser (requires special syntax parsing): DATE_PART only supported in postgres"
+    },
+    {
+      "id": "DIFF_0421",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "GROUP_CONCAT",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Function parser (requires special syntax parsing): GROUP_CONCAT only supported in mysql"
+    },
+    {
+      "id": "DIFF_0422",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "JSONB_EXISTS",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Function parser (requires special syntax parsing): JSONB_EXISTS only supported in postgres"
+    },
+    {
+      "id": "DIFF_0423",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "JSON_AGG",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Function parser (requires special syntax parsing): JSON_AGG only supported in postgres"
+    },
+    {
+      "id": "DIFF_0424",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "JSON_ARRAY",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "Function parser (requires special syntax parsing): JSON_ARRAY only supported in oracle"
+    },
+    {
+      "id": "DIFF_0425",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "JSON_ARRAYAGG",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "Function parser (requires special syntax parsing): JSON_ARRAYAGG only supported in oracle"
+    },
+    {
+      "id": "DIFF_0426",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "JSON_EXISTS",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "Function parser (requires special syntax parsing): JSON_EXISTS only supported in oracle"
+    },
+    {
+      "id": "DIFF_0427",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "JSON_VALUE",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Function parser (requires special syntax parsing): JSON_VALUE only supported in mysql"
+    },
+    {
+      "id": "DIFF_0428",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "SUBSTR",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Function parser (requires special syntax parsing): SUBSTR only supported in mysql"
+    },
+    {
+      "id": "DIFF_0429",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.FUNCTION_PARSERS",
+      "feature": "VALUES",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Function parser (requires special syntax parsing): VALUES only supported in mysql"
+    },
+    {
+      "id": "DIFF_0430",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTION_PARSERS",
+      "feature": "DBMS_RANDOM",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "No-parenthesis functionparser: DBMS_RANDOM only supported in Oracle "
+    },
+    {
+      "id": "DIFF_0431",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTION_PARSERS",
+      "feature": "NEXT",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "No-parenthesis functionparser: NEXT only supported in Oracle "
+    },
+    {
+      "id": "DIFF_0432",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTION_PARSERS",
+      "feature": "PRIOR",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "No-parenthesis functionparser: PRIOR only supported in Oracle "
+    },
+    {
+      "id": "DIFF_0433",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTION_PARSERS",
+      "feature": "SYSDATE",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "No-parenthesis functionparser: SYSDATE only supported in Oracle "
+    },
+    {
+      "id": "DIFF_0434",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTION_PARSERS",
+      "feature": "VARIADIC",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "No-parenthesis functionparser: VARIADIC only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0435",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTIONS",
+      "feature": "TokenType.CURRENT_CATALOG",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "No-parenthesis functionmapping: TokenType.CURRENT_CATALOG only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0436",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTIONS",
+      "feature": "TokenType.CURRENT_SCHEMA",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "No-parenthesis functionmapping: TokenType.CURRENT_SCHEMA only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0437",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTIONS",
+      "feature": "TokenType.LOCALTIME",
+      "mysql": "✓",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "No-parenthesis functionmapping: TokenType.LOCALTIME only supported in MySQL, PostgreSQL "
+    },
+    {
+      "id": "DIFF_0438",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTIONS",
+      "feature": "TokenType.SESSION_USER",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "No-parenthesis functionmapping: TokenType.SESSION_USER only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0439",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.NO_PAREN_FUNCTIONS",
+      "feature": "TokenType.SYSTIMESTAMP",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "No-parenthesis functionmapping: TokenType.SYSTIMESTAMP only supported in Oracle "
+    },
+    {
+      "id": "DIFF_0440",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.RANGE_PARSERS",
+      "feature": "TokenType.DAMP",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Range operator parser: TokenType.DAMP only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0441",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.RANGE_PARSERS",
+      "feature": "TokenType.DAT",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Range operator parser: TokenType.DAT only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0442",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.RANGE_PARSERS",
+      "feature": "TokenType.MEMBER_OF",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Range operator parser: TokenType.MEMBER_OF only supported in MySQL "
+    },
+    {
+      "id": "DIFF_0443",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.RANGE_PARSERS",
+      "feature": "TokenType.SOUNDS_LIKE",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Range operator parser: TokenType.SOUNDS_LIKE only supported in MySQL "
+    },
+    {
+      "id": "DIFF_0444",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.STATEMENT_PARSERS",
+      "feature": "TokenType.END",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Statement parser: TokenType.END only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0445",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.STATEMENT_PARSERS",
+      "feature": "TokenType.SHOW",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Statement parser: TokenType.SHOW only supported in MySQL "
+    },
+    {
+      "id": "DIFF_0446",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.CONSTRAINT_PARSERS",
+      "feature": "FULLTEXT",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Constraint parser: FULLTEXT only supported in mysql"
+    },
+    {
+      "id": "DIFF_0447",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.CONSTRAINT_PARSERS",
+      "feature": "INDEX",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Constraint parser: INDEX only supported in mysql"
+    },
+    {
+      "id": "DIFF_0448",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.CONSTRAINT_PARSERS",
+      "feature": "KEY",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Constraint parser: KEY only supported in mysql"
+    },
+    {
+      "id": "DIFF_0449",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.CONSTRAINT_PARSERS",
+      "feature": "SPATIAL",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Constraint parser: SPATIAL only supported in mysql"
+    },
+    {
+      "id": "DIFF_0450",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.CONSTRAINT_PARSERS",
+      "feature": "ZEROFILL",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Constraint parser: ZEROFILL only supported in mysql"
+    },
+    {
+      "id": "DIFF_0451",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.ALTER_PARSERS",
+      "feature": "MODIFY",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "ALTER statement parser: MODIFY only supported in mysql"
+    },
+    {
+      "id": "DIFF_0452",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.PROPERTY_PARSERS",
+      "feature": "FORCE",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "Property parser: FORCE only supported in oracle"
+    },
+    {
+      "id": "DIFF_0453",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.PROPERTY_PARSERS",
+      "feature": "INPUT",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "Property parser: INPUT only supported in mysql, oracle"
+    },
+    {
+      "id": "DIFF_0454",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.PROPERTY_PARSERS",
+      "feature": "PRIVATE",
+      "mysql": "✗",
+      "postgres": "✗",
+      "oracle": "✓",
+      "description": "Property parser: PRIVATE only supported in oracle"
+    },
+    {
+      "id": "DIFF_0455",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.SET_PARSERS",
+      "feature": "CHARACTER SET",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "SETStatement parser: CHARACTER SET only supported in MySQL "
+    },
+    {
+      "id": "DIFF_0456",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.SET_PARSERS",
+      "feature": "CHARSET",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "SET statement parser: CHARSET only supported in mysql"
+    },
+    {
+      "id": "DIFF_0457",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.SET_PARSERS",
+      "feature": "NAMES",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "SET statement parser: NAMES only supported in mysql"
+    },
+    {
+      "id": "DIFF_0458",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.SET_PARSERS",
+      "feature": "PERSIST",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "SET statement parser: PERSIST only supported in mysql"
+    },
+    {
+      "id": "DIFF_0459",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.SET_PARSERS",
+      "feature": "PERSIST_ONLY",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "SET statement parser: PERSIST_ONLY only supported in mysql"
+    },
+    {
+      "id": "DIFF_0460",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.PLACEHOLDER_PARSERS",
+      "feature": "TokenType.MOD",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Placeholder parser: TokenType.MOD only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0461",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.CONJUNCTION",
+      "feature": "TokenType.DAMP",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Logical AND operator: TokenType.DAMP only supported in MySQL "
+    },
+    {
+      "id": "DIFF_0462",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.CONJUNCTION",
+      "feature": "TokenType.XOR",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Logical AND operator: TokenType.XOR only supported in MySQL "
+    },
+    {
+      "id": "DIFF_0463",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.DISJUNCTION",
+      "feature": "TokenType.DPIPE",
+      "mysql": "✓",
+      "postgres": "✗",
+      "oracle": "✗",
+      "description": "Logical OR operator: TokenType.DPIPE only supported in MySQL "
+    },
+    {
+      "id": "DIFF_0464",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.BITWISE",
+      "feature": "TokenType.HASH",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "bitoperator: TokenType.HASH only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0465",
+      "category": "Syntax Structure",
+      "subcategory": "Parser.EXPONENT",
+      "feature": "TokenType.CARET",
+      "mysql": "✗",
+      "postgres": "✓",
+      "oracle": "✗",
+      "description": "Exponent operator: TokenType.CARET only supported in PostgreSQL "
+    },
+    {
+      "id": "DIFF_0466",
+      "category": "DDL Property",
+      "subcategory": "PROPERTIES_LOCATION",
+      "feature": "PartitionByListProperty",
+      "mysql": "POST_SCHEMA",
+      "postgres": "N/A",
+      "oracle": "N/A",
+      "description": "DDL property PartitionByListProperty location/support differs across dialects"
+    },
+    {
+      "id": "DIFF_0467",
+      "category": "DDL Property",
+      "subcategory": "PROPERTIES_LOCATION",
+      "feature": "PartitionByRangeProperty",
+      "mysql": "POST_SCHEMA",
+      "postgres": "N/A",
+      "oracle": "N/A",
+      "description": "DDL property PartitionByRangeProperty location/support differs across dialects"
+    },
+    {
+      "id": "DIFF_0468",
+      "category": "DDL Property",
+      "subcategory": "PROPERTIES_LOCATION",
+      "feature": "PartitionedByProperty",
+      "mysql": "UNSUPPORTED",
+      "postgres": "POST_SCHEMA",
+      "oracle": "POST_WITH",
+      "description": "DDL property PartitionedByProperty location/support differs across dialects"
+    },
+    {
+      "id": "DIFF_0469",
+      "category": "DDL Property",
+      "subcategory": "PROPERTIES_LOCATION",
+      "feature": "TransientProperty",
+      "mysql": "UNSUPPORTED",
+      "postgres": "UNSUPPORTED",
+      "oracle": "POST_CREATE",
+      "description": "DDL property TransientProperty location/support differs across dialects"
+    },
+    {
+      "id": "DIFF_0470",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%M",
+      "mysql": "%M -> %B",
+      "description": "MySQL time format: %M corresponds to Python %B"
+    },
+    {
+      "id": "DIFF_0471",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%T",
+      "mysql": "%T -> %H:%M:%S",
+      "description": "MySQL time format: %T corresponds to Python %H:%M:%S"
+    },
+    {
+      "id": "DIFF_0472",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%W",
+      "mysql": "%W -> %A",
+      "description": "MySQL time format: %W corresponds to Python %A"
+    },
+    {
+      "id": "DIFF_0473",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%c",
+      "mysql": "%c -> %-m",
+      "description": "MySQL time format: %c corresponds to Python %-m"
+    },
+    {
+      "id": "DIFF_0474",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%e",
+      "mysql": "%e -> %-d",
+      "description": "MySQL time format: %e corresponds to Python %-d"
+    },
+    {
+      "id": "DIFF_0475",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%h",
+      "mysql": "%h -> %I",
+      "description": "MySQL time format: %h corresponds to Python %I"
+    },
+    {
+      "id": "DIFF_0476",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%i",
+      "mysql": "%i -> %M",
+      "description": "MySQL time format: %i corresponds to Python %M"
+    },
+    {
+      "id": "DIFF_0477",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%k",
+      "mysql": "%k -> %-H",
+      "description": "MySQL time format: %k corresponds to Python %-H"
+    },
+    {
+      "id": "DIFF_0478",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%l",
+      "mysql": "%l -> %-I",
+      "description": "MySQL time format: %l corresponds to Python %-I"
+    },
+    {
+      "id": "DIFF_0479",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%s",
+      "mysql": "%s -> %S",
+      "description": "MySQL time format: %s corresponds to Python %S"
+    },
+    {
+      "id": "DIFF_0480",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "mysql:%u",
+      "mysql": "%u -> %W",
+      "description": "MySQL time format: %u corresponds to Python %W"
+    },
+    {
+      "id": "DIFF_0481",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:D",
+      "postgres": "D -> %u",
+      "description": "PostgreSQL time format: D corresponds to Python %u"
+    },
+    {
+      "id": "DIFF_0482",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:DD",
+      "postgres": "DD -> %d",
+      "description": "PostgreSQL time format: DD corresponds to Python %d"
+    },
+    {
+      "id": "DIFF_0483",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:DDD",
+      "postgres": "DDD -> %j",
+      "description": "PostgreSQL time format: DDD corresponds to Python %j"
+    },
+    {
+      "id": "DIFF_0484",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:FMDD",
+      "postgres": "FMDD -> %-d",
+      "description": "PostgreSQL time format: FMDD corresponds to Python %-d"
+    },
+    {
+      "id": "DIFF_0485",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:FMDDD",
+      "postgres": "FMDDD -> %-j",
+      "description": "PostgreSQL time format: FMDDD corresponds to Python %-j"
+    },
+    {
+      "id": "DIFF_0486",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:FMHH12",
+      "postgres": "FMHH12 -> %-I",
+      "description": "PostgreSQL time format: FMHH12 corresponds to Python %-I"
+    },
+    {
+      "id": "DIFF_0487",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:FMHH24",
+      "postgres": "FMHH24 -> %-H",
+      "description": "PostgreSQL time format: FMHH24 corresponds to Python %-H"
+    },
+    {
+      "id": "DIFF_0488",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:FMMI",
+      "postgres": "FMMI -> %-M",
+      "description": "PostgreSQL time format: FMMI corresponds to Python %-M"
+    },
+    {
+      "id": "DIFF_0489",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:FMMM",
+      "postgres": "FMMM -> %-m",
+      "description": "PostgreSQL time format: FMMM corresponds to Python %-m"
+    },
+    {
+      "id": "DIFF_0490",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:FMSS",
+      "postgres": "FMSS -> %-S",
+      "description": "PostgreSQL time format: FMSS corresponds to Python %-S"
+    },
+    {
+      "id": "DIFF_0491",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:HH12",
+      "postgres": "HH12 -> %I",
+      "description": "PostgreSQL time format: HH12 corresponds to Python %I"
+    },
+    {
+      "id": "DIFF_0492",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:HH24",
+      "postgres": "HH24 -> %H",
+      "description": "PostgreSQL time format: HH24 corresponds to Python %H"
+    },
+    {
+      "id": "DIFF_0493",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:MI",
+      "postgres": "MI -> %M",
+      "description": "PostgreSQL time format: MI corresponds to Python %M"
+    },
+    {
+      "id": "DIFF_0494",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:MM",
+      "postgres": "MM -> %m",
+      "description": "PostgreSQL time format: MM corresponds to Python %m"
+    },
+    {
+      "id": "DIFF_0495",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:OF",
+      "postgres": "OF -> %z",
+      "description": "PostgreSQL time format: OF corresponds to Python %z"
+    },
+    {
+      "id": "DIFF_0496",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:SS",
+      "postgres": "SS -> %S",
+      "description": "PostgreSQL time format: SS corresponds to Python %S"
+    },
+    {
+      "id": "DIFF_0497",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:TMDay",
+      "postgres": "TMDay -> %A",
+      "description": "PostgreSQL time format: TMDay corresponds to Python %A"
+    },
+    {
+      "id": "DIFF_0498",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:TMDy",
+      "postgres": "TMDy -> %a",
+      "description": "PostgreSQL time format: TMDy corresponds to Python %a"
+    },
+    {
+      "id": "DIFF_0499",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:TMMon",
+      "postgres": "TMMon -> %b",
+      "description": "PostgreSQL time format: TMMon corresponds to Python %b"
+    },
+    {
+      "id": "DIFF_0500",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:TMMonth",
+      "postgres": "TMMonth -> %B",
+      "description": "PostgreSQL time format: TMMonth corresponds to Python %B"
+    },
+    {
+      "id": "DIFF_0501",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:TZ",
+      "postgres": "TZ -> %Z",
+      "description": "PostgreSQL time format: TZ corresponds to Python %Z"
+    },
+    {
+      "id": "DIFF_0502",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:US",
+      "postgres": "US -> %f",
+      "description": "PostgreSQL time format: US corresponds to Python %f"
+    },
+    {
+      "id": "DIFF_0503",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:WW",
+      "postgres": "WW -> %U",
+      "description": "PostgreSQL time format: WW corresponds to Python %U"
+    },
+    {
+      "id": "DIFF_0504",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:YY",
+      "postgres": "YY -> %y",
+      "description": "PostgreSQL time format: YY corresponds to Python %y"
+    },
+    {
+      "id": "DIFF_0505",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:YYYY",
+      "postgres": "YYYY -> %Y",
+      "description": "PostgreSQL time format: YYYY corresponds to Python %Y"
+    },
+    {
+      "id": "DIFF_0506",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:d",
+      "postgres": "d -> %u",
+      "description": "PostgreSQL time format: d corresponds to Python %u"
+    },
+    {
+      "id": "DIFF_0507",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:dd",
+      "postgres": "dd -> %d",
+      "description": "PostgreSQL time format: dd corresponds to Python %d"
+    },
+    {
+      "id": "DIFF_0508",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:ddd",
+      "postgres": "ddd -> %j",
+      "description": "PostgreSQL time format: ddd corresponds to Python %j"
+    },
+    {
+      "id": "DIFF_0509",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:mi",
+      "postgres": "mi -> %M",
+      "description": "PostgreSQL time format: mi corresponds to Python %M"
+    },
+    {
+      "id": "DIFF_0510",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:mm",
+      "postgres": "mm -> %m",
+      "description": "PostgreSQL time format: mm corresponds to Python %m"
+    },
+    {
+      "id": "DIFF_0511",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:ss",
+      "postgres": "ss -> %S",
+      "description": "PostgreSQL time format: ss corresponds to Python %S"
+    },
+    {
+      "id": "DIFF_0512",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:ww",
+      "postgres": "ww -> %U",
+      "description": "PostgreSQL time format: ww corresponds to Python %U"
+    },
+    {
+      "id": "DIFF_0513",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:yy",
+      "postgres": "yy -> %y",
+      "description": "PostgreSQL time format: yy corresponds to Python %y"
+    },
+    {
+      "id": "DIFF_0514",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "postgres:yyyy",
+      "postgres": "yyyy -> %Y",
+      "description": "PostgreSQL time format: yyyy corresponds to Python %Y"
+    },
+    {
+      "id": "DIFF_0515",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:D",
+      "oracle": "D -> %u",
+      "description": "Oracle time format: D corresponds to Python %u"
+    },
+    {
+      "id": "DIFF_0516",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:DAY",
+      "oracle": "DAY -> %A",
+      "description": "Oracle time format: DAY corresponds to Python %A"
+    },
+    {
+      "id": "DIFF_0517",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:DD",
+      "oracle": "DD -> %d",
+      "description": "Oracle time format: DD corresponds to Python %d"
+    },
+    {
+      "id": "DIFF_0518",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:DDD",
+      "oracle": "DDD -> %j",
+      "description": "Oracle time format: DDD corresponds to Python %j"
+    },
+    {
+      "id": "DIFF_0519",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:DY",
+      "oracle": "DY -> %a",
+      "description": "Oracle time format: DY corresponds to Python %a"
+    },
+    {
+      "id": "DIFF_0520",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:FF6",
+      "oracle": "FF6 -> %f",
+      "description": "Oracle time format: FF6 corresponds to Python %f"
+    },
+    {
+      "id": "DIFF_0521",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:HH",
+      "oracle": "HH -> %I",
+      "description": "Oracle time format: HH corresponds to Python %I"
+    },
+    {
+      "id": "DIFF_0522",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:HH12",
+      "oracle": "HH12 -> %I",
+      "description": "Oracle time format: HH12 corresponds to Python %I"
+    },
+    {
+      "id": "DIFF_0523",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:HH24",
+      "oracle": "HH24 -> %H",
+      "description": "Oracle time format: HH24 corresponds to Python %H"
+    },
+    {
+      "id": "DIFF_0524",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:IW",
+      "oracle": "IW -> %V",
+      "description": "Oracle time format: IW corresponds to Python %V"
+    },
+    {
+      "id": "DIFF_0525",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:MI",
+      "oracle": "MI -> %M",
+      "description": "Oracle time format: MI corresponds to Python %M"
+    },
+    {
+      "id": "DIFF_0526",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:MM",
+      "oracle": "MM -> %m",
+      "description": "Oracle time format: MM corresponds to Python %m"
+    },
+    {
+      "id": "DIFF_0527",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:MON",
+      "oracle": "MON -> %b",
+      "description": "Oracle time format: MON corresponds to Python %b"
+    },
+    {
+      "id": "DIFF_0528",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:MONTH",
+      "oracle": "MONTH -> %B",
+      "description": "Oracle time format: MONTH corresponds to Python %B"
+    },
+    {
+      "id": "DIFF_0529",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:SS",
+      "oracle": "SS -> %S",
+      "description": "Oracle time format: SS corresponds to Python %S"
+    },
+    {
+      "id": "DIFF_0530",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:WW",
+      "oracle": "WW -> %W",
+      "description": "Oracle time format: WW corresponds to Python %W"
+    },
+    {
+      "id": "DIFF_0531",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:YY",
+      "oracle": "YY -> %y",
+      "description": "Oracle time format: YY corresponds to Python %y"
+    },
+    {
+      "id": "DIFF_0532",
+      "category": "Temporal Format",
+      "subcategory": "TIME_MAPPING",
+      "feature": "oracle:YYYY",
+      "oracle": "YYYY -> %Y",
+      "description": "Oracle time format: YYYY corresponds to Python %Y"
+    },
+    {
+      "id": "DIFF_0533",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "DAY_HOUR",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit DAY_HOUR: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0534",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "DAY_MICROSECOND",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit DAY_MICROSECOND: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0535",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "DAY_MINUTE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit DAY_MINUTE: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0536",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "DAY_SECOND",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit DAY_SECOND: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0537",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "HOUR_MICROSECOND",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit HOUR_MICROSECOND: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0538",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "HOUR_MINUTE",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit HOUR_MINUTE: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0539",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "HOUR_SECOND",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit HOUR_SECOND: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0540",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "MINUTE_MICROSECOND",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit MINUTE_MICROSECOND: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0541",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "MINUTE_SECOND",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit MINUTE_SECOND: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0542",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "SECOND_MICROSECOND",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit SECOND_MICROSECOND: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0543",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/PostgreSQL not)",
+      "feature": "YEAR_MONTH",
+      "mysql": "✓ Supported",
+      "postgres": "✗ Not supported",
+      "description": "INTERVAL unit YEAR_MONTH: MySQL supported, PostgreSQL not supported"
+    },
+    {
+      "id": "DIFF_0544",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "DAY_HOUR",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit DAY_HOUR: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0545",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "DAY_MICROSECOND",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit DAY_MICROSECOND: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0546",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "DAY_MINUTE",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit DAY_MINUTE: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0547",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "DAY_SECOND",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit DAY_SECOND: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0548",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "HOUR_MICROSECOND",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit HOUR_MICROSECOND: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0549",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "HOUR_MINUTE",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit HOUR_MINUTE: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0550",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "HOUR_SECOND",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit HOUR_SECOND: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0551",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "MINUTE_MICROSECOND",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit MINUTE_MICROSECOND: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0552",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "MINUTE_SECOND",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit MINUTE_SECOND: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0553",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "SECOND_MICROSECOND",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit SECOND_MICROSECOND: MySQL supported, Oracle not supported"
+    },
+    {
+      "id": "DIFF_0554",
+      "category": "INTERVAL",
+      "subcategory": "INTERVAL Unit (MySQL has/Oracle not)",
+      "feature": "YEAR_MONTH",
+      "mysql": "✓ Supported",
+      "oracle": "✗ Not supported",
+      "description": "INTERVAL unit YEAR_MONTH: MySQL supported, Oracle not supported"
+    }
+  ]
+}

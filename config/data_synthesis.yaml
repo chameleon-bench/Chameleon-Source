@@ -1,0 +1,46 @@
+# Data Synthesis Configuration
+
+# LLM for data generation
+llm:
+  provider: "deepseek"
+  model: "deepseek-v4-pro"
+
+# Synthesis parameters
+synthesis:
+  batch_size: 50
+  concurrent_workers: 6
+
+# LLM data generation
+llm_data_gen:
+  scenarios_per_completion: 50  # K business operations per LLM call
+  temperature: 0.9
+  max_tokens: 32768
+
+# Entity harvesting (web search for real-world entities)
+entity_harvester:
+  queries_per_table: 4
+  concurrent_tables: 4
+  concurrent_queries: 3
+  search:
+    provider: "serper"  # serper or ddgs
+    serper_api_keys:
+      - "YOUR_SERPER_API_KEY_1"
+      - "YOUR_SERPER_API_KEY_2"
+      - "YOUR_SERPER_API_KEY_3"
+      - "YOUR_SERPER_API_KEY_4"
+  llm:
+    provider: "deepseek"
+    model: "deepseek-v4-flash"
+
+# Output paths
+output:
+  allocation_file: "./output/schema_expansion/allocation_{split}.json"
+  requirements_file: "./data/database_sync_requirements.json"
+
+# Schema parsing
+schema:
+  database_dir: "./database/{split}"
+  dialects:
+    - mysql
+    - pg
+    - oracle

@@ -1,0 +1,78 @@
+# Query Synthesis Configuration
+
+# Target dialect for query synthesis
+target_dialect: "postgresql"
+
+# LLM parameters
+llm:
+  provider: "deepseek"
+  model: "deepseek-v4-flash"
+  temperature: 0.8
+  max_tokens: 32768
+
+# Synthesis parameters
+synthesis:
+  queries_per_call: 6
+  loops_per_difficulty: 2
+  sample_rows:
+  seed: 42
+
+# Difficulty distribution weights
+difficulty_weights:
+  easy: 0.1
+  medium: 0.3
+  hard: 0.4
+  extra: 0.2
+
+# Parallelism
+parallel:
+  max_llm_workers: 8
+  max_validation_workers: 12
+
+# Knowledge base reference injection
+kb_reference:
+  items_per_call: 20
+  stratified_sampling: true
+
+# Dialect assignment per database
+dialect_assignment:
+  file: "./database/test/dialect_assignment.json"
+
+# Difference allocation
+diff_allocation:
+  allocation_file: "./output/schema_expansion/allocation_should_test.json"
+  requirements_file: "./data/database_sync_requirements.json"
+  split: "test"
+
+# Database connections
+database:
+  mysql:
+    host: YOUR_MYSQL_HOST
+    port: 3306
+    user: root
+    password: "YOUR_MYSQL_PASSWORD"
+  postgresql:
+    host: YOUR_PG_HOST
+    port: 5432
+    user: postgres
+    password: "YOUR_PG_PASSWORD"
+  oracle:
+    host: YOUR_ORACLE_HOST
+    port: 1521
+    user: system
+    password: "YOUR_ORACLE_PASSWORD"
+
+# Schema directory
+schema:
+  database_dir: "./database"
+
+# Output
+output:
+  output_dir: "./output/query_synthesis"
+  save_raw_response: true
+
+# Reflection (SQL self-repair)
+reflection:
+  enabled: true
+  max_retries: 3
+  query_timeout: 10
