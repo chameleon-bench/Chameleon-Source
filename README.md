@@ -84,7 +84,7 @@ Edit `config/llm_config.yaml` to set up your LLM provider and API key for runnin
 
 The evaluation toolkit measures translation quality using two metrics:
 
-- **Execution Score (ES):** The percentage of translated SQL queries that execute successfully on the target database engine.
+- **Execution Success (ES):** The percentage of translated SQL queries that execute successfully on the target database engine.
 - **Execution Match (EM):** The percentage of translated SQL queries whose result sets match the source query's results.
 
 ### Input Format
