@@ -29,7 +29,7 @@ from typing import Dict, Any, List, Optional, Tuple
 
 import yaml
 
-PROJECT_ROOT = Path(__file__).parent.parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from data_synthesis.schema_parser import SchemaInfo, TableInfo, ColumnInfo
@@ -41,7 +41,7 @@ logger = get_logger(__name__)
 # Load search config
 def _load_search_config() -> Dict[str, Any]:
     """Load search config from data_synthesis.yaml."""
-    config_path = PROJECT_ROOT / "src" / "config" / "data_synthesis.yaml"
+    config_path = PROJECT_ROOT / "config" / "data_synthesis.yaml"
     try:
         with open(config_path, 'r', encoding='utf-8') as f:
             config = yaml.safe_load(f)

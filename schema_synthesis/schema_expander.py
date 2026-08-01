@@ -44,7 +44,7 @@ from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
-PROJECT_ROOT = Path(__file__).parent.parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from llm.client import LLMClient
@@ -1170,7 +1170,7 @@ def main():
     args = parser.parse_args()
     
     # Load config
-    config_path = PROJECT_ROOT / "src" / "config" / "schema_synthesis.yaml"
+    config_path = PROJECT_ROOT / "config" / "schema_synthesis.yaml"
     with open(config_path, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
     

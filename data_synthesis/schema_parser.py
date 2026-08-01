@@ -1003,7 +1003,7 @@ def _sync_allowed_values_across_dialects(triple: TripleSchemaInfo):
 if __name__ == "__main__":
     import sys
     
-    project_root = Path(__file__).parent.parent.parent
+    project_root = Path(__file__).parent.parent
     database_dir = project_root / "database"
     
     print("=" * 80)

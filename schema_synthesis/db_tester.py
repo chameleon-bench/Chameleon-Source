@@ -20,7 +20,7 @@ from utils.logging_config import get_logger
 
 logger = get_logger(__name__)
 
-PROJECT_ROOT = Path(__file__).parent.parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent
 
 
 # =============================================================================

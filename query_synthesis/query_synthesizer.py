@@ -22,7 +22,7 @@ from typing import List, Dict, Any, Optional, Tuple
 import yaml
 
 # Add project root to path
-PROJECT_ROOT = Path(__file__).parent.parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils.logging_config import get_logger
@@ -60,7 +60,7 @@ class QuerySynthesizer:
             config_path: Config file path, defaults to config/query_synthesis.yaml
         """
         if config_path is None:
-            config_path = PROJECT_ROOT / 'src' / 'config' / 'query_synthesis.yaml'
+            config_path = PROJECT_ROOT / 'config' / 'query_synthesis.yaml'
 
         self.config = self._load_config(config_path)
         self.target_dialect = self.config['target_dialect']  # "mysql" or "postgresql"

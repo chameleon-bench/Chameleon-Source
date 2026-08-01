@@ -40,7 +40,7 @@ def _get_utf8_stdout():
 
 
 # Log root directory
-PROJECT_ROOT = Path(__file__).parent.parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent
 
 
 class RelativePathFormatter(logging.Formatter):
